@@ -39,6 +39,7 @@ closeBtn.addEventListener("click", () => {
 skipBtn.addEventListener("click", showSkipConfirmation);
 cancelSkipBtn.addEventListener("click", hideSkipConfirmation);
 confirmSkipBtn.addEventListener("click", skipTimer);
+resetBtn.addEventListener("click", resetTimer);
 
 // functions
 
@@ -127,4 +128,21 @@ function showSkipConfirmation() {
 
 function hideSkipConfirmation() {
   skipConfirmModal.style.display = "none";
+}
+
+// reset
+function resetTimer() {
+  clearInterval(timerInterval);
+  isRunning = false;
+  console.log(modeDisplay.textContent);
+  if (modeDisplay.textContent === "Work Mode") {
+    currentTime = workTime;
+  } else if (modeDisplay.textContent === "Break Mode") {
+    currentTime = breakTime;
+  } else {
+    currentTime = longBreakTime;
+  }
+  updateTimerDisplay();
+  toggleBtn.textContent = "Start";
+  resetBtn.disabled = true;
 }
