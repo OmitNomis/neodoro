@@ -184,6 +184,10 @@ html {
   outline: none;
   cursor: pointer;
 }
+.modal label,
+.modal h2 {
+  color: var(--primary-color);
+}
 
 .settings-form input[type="checkbox"]:checked {
   background-color: var(--primary-color);
