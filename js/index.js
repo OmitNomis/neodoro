@@ -195,14 +195,7 @@ function loadSettings() {
       sessionsBeforeLongBreak;
     document.getElementById("muteSounds").checked = muteSounds;
 
-    if (isWorkMode) {
-      currentTime = workTime;
-    } else if (cycles % sessionsBeforeLongBreak === 0) {
-      currentTime = longBreakTime;
-    } else {
-      currentTime = breakTime;
-    }
-
+    currentTime = workTime;
     updateTimerDisplay();
   }
 }

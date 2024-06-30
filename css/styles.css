@@ -40,6 +40,7 @@ html {
 }
 
 .timer {
+  color: var(--primary-color);
   font-size: clamp(4rem, 10vw, 8rem);
   text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color),
     0 0 30px var(--primary-color);
@@ -279,4 +280,28 @@ html {
   62% {
     transform: translate(-22px, 5px) skew(21deg);
   }
+}
+body.break-mode {
+  --primary-color: var(--secondary-color);
+}
+
+body.break-mode .timer {
+  text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color),
+    0 0 30px var(--secondary-color);
+}
+body.break-mode .mini-modal p {
+  color: var(--primary-color);
+}
+
+body.break-mode .btn,
+body.break-mode .icon-btn {
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+body.break-mode .btn:hover,
+body.break-mode .icon-btn:hover {
+  background-color: var(--secondary-color);
+  color: var(--bg-color);
+  box-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color);
 }
