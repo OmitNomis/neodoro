@@ -319,6 +319,7 @@ body.break-mode .icon-btn:hover {
   padding: 2rem;
   border-radius: 10px;
   margin: 2rem auto;
+  width: 80%;
   max-width: 800px;
   width: 90%;
   box-shadow: 0 0 20px var(--primary-color);
@@ -336,7 +337,7 @@ body.break-mode .icon-btn:hover {
 }
 @media (max-width: 768px) {
   .how-to-use {
-    padding: 1rem;
-    width: 95%;
+    padding: 0.5rem;
+    font-size: 0.8rem;
   }
 }
