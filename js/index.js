@@ -23,6 +23,9 @@ const settingsBtn = document.getElementById("settingsBtn");
 const settingsModal = document.getElementById("settingsModal");
 const settingsForm = document.getElementById("settingsForm");
 const closeBtn = document.getElementsByClassName("close")[0];
+const skipConfirmModal = document.getElementById("skipConfirmModal");
+const confirmSkipBtn = document.getElementById("confirmSkip");
+const cancelSkipBtn = document.getElementById("cancelSkip");
 
 // event listeners
 toggleBtn.addEventListener("click", toggleTimer);
@@ -33,6 +36,9 @@ settingsBtn.addEventListener("click", () => {
 closeBtn.addEventListener("click", () => {
   settingsModal.style.display = "none";
 });
+skipBtn.addEventListener("click", showSkipConfirmation);
+cancelSkipBtn.addEventListener("click", hideSkipConfirmation);
+confirmSkipBtn.addEventListener("click", skipTimer);
 
 // functions
 
@@ -87,4 +93,38 @@ function updateTimer() {
     toggleBtn.textContent = "Start";
     resetBtn.disabled = false;
   }
+}
+// skip timer
+
+function skipTimer() {
+  if (isWorkMode) {
+    cycles++;
+    cyclesDisplay.textContent = cycles;
+    if (cycles % sessionsBeforeLongBreak === 0) {
+      currentTime = longBreakTime;
+      modeDisplay.textContent = "Long Break Mode";
+    } else {
+      currentTime = breakTime;
+      modeDisplay.textContent = "Break Mode";
+    }
+  } else {
+    currentTime = workTime;
+    modeDisplay.textContent = "Work Mode";
+  }
+  isWorkMode = !isWorkMode;
+  document.body.classList.toggle("break-mode");
+  updateTimerDisplay();
+  if (isRunning) {
+    clearInterval(timerInterval);
+    timerInterval = setInterval(updateTimer, 1000);
+  }
+  hideSkipConfirmation();
+}
+
+function showSkipConfirmation() {
+  skipConfirmModal.style.display = "block";
+}
+
+function hideSkipConfirmation() {
+  skipConfirmModal.style.display = "none";
 }

@@ -187,3 +187,26 @@ html {
 .settings-form input[type="checkbox"]:checked {
   background-color: var(--primary-color);
 }
+.mini-modal {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--modal-bg-color);
+  padding: 20px;
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+  text-align: center;
+}
+
+.mini-modal p {
+  margin-bottom: 1rem;
+}
+
+.mini-modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
