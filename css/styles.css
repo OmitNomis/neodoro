@@ -24,7 +24,7 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 100dvh;
   background: linear-gradient(45deg, var(--bg-color), #1a1a1a);
   position: relative;
   padding: 2rem;
@@ -308,4 +308,31 @@ body.break-mode .icon-btn:hover {
   background-color: var(--secondary-color);
   color: var(--bg-color);
   box-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color);
+}
+.how-to-use {
+  color: white;
+  background-color: rgba(26, 26, 26, 0.8);
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 2rem auto;
+  max-width: 800px;
+  width: 90%;
+  box-shadow: 0 0 20px var(--primary-color);
+  transition: all 0.3s ease;
+}
+.how-to-use:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 30px var(--primary-color);
+}
+.how-to-use strong {
+  color: var(--primary-color);
+}
+.how-to-use h2 {
+  color: var(--primary-color);
+}
+@media (max-width: 768px) {
+  .how-to-use {
+    padding: 1rem;
+    width: 95%;
+  }
 }
