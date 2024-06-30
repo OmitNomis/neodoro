@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap");
+
 :root {
-  background-color: black;
+  --primary-color: #00ff00;
+  --secondary-color: #ff00ff;
+  --bg-color: #0a0a0a;
+  --modal-bg-color: #1a1a1a;
+  --text-color: #00ff00;
 }
