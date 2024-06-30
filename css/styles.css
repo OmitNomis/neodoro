@@ -103,3 +103,17 @@ html {
   opacity: 0.5;
   cursor: not-allowed;
 }
+.stats {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: clamp(0.7rem, 2vw, 0.8rem);
+  text-align: right;
+  color: var(--primary-color);
+  text-shadow: 0 0 5px var(--primary-color);
+}
+#settingsBtn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
