@@ -19,6 +19,18 @@ html {
   overflow-x: hidden;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(45deg, var(--bg-color), #1a1a1a);
+  position: relative;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
 .timer-container {
   display: flex;
   flex-direction: column;
@@ -66,4 +78,28 @@ html {
   background-color: var(--primary-color);
   color: var(--bg-color);
   box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+}
+.icon-btn {
+  background: none;
+  border: 2px solid var(--primary-color);
+  cursor: pointer;
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.icon-btn:hover {
+  color: var(--bg-color);
+  background-color: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color);
+}
+
+.icon-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
