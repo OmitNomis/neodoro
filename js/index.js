@@ -157,6 +157,16 @@ function saveSettings(e) {
   ).value;
   muteSounds = document.getElementById("muteSounds").checked;
 
+  // Save settings to localStorage
+  const settings = {
+    workTime,
+    breakTime,
+    longBreakTime,
+    sessionsBeforeLongBreak,
+    muteSounds,
+  };
+  localStorage.setItem("pomodoroSettings", JSON.stringify(settings));
+
   if (isWorkMode) {
     currentTime = workTime;
   } else if (cycles % sessionsBeforeLongBreak === 0) {
@@ -167,5 +177,35 @@ function saveSettings(e) {
 
   updateTimerDisplay();
   settingsModal.style.display = "none";
-  if (!muteSounds) cyberBeep.play();
 }
+function loadSettings() {
+  const savedSettings = localStorage.getItem("pomodoroSettings");
+  if (savedSettings) {
+    const settings = JSON.parse(savedSettings);
+    workTime = settings.workTime;
+    breakTime = settings.breakTime;
+    longBreakTime = settings.longBreakTime;
+    sessionsBeforeLongBreak = settings.sessionsBeforeLongBreak;
+    muteSounds = settings.muteSounds;
+
+    document.getElementById("workDuration").value = workTime / 60;
+    document.getElementById("breakDuration").value = breakTime / 60;
+    document.getElementById("longBreakDuration").value = longBreakTime / 60;
+    document.getElementById("sessionsBeforeLongBreak").value =
+      sessionsBeforeLongBreak;
+    document.getElementById("muteSounds").checked = muteSounds;
+
+    if (isWorkMode) {
+      currentTime = workTime;
+    } else if (cycles % sessionsBeforeLongBreak === 0) {
+      currentTime = longBreakTime;
+    } else {
+      currentTime = breakTime;
+    }
+
+    updateTimerDisplay();
+  }
+}
+
+// Call loadSettings when the page loads
+document.addEventListener("DOMContentLoaded", loadSettings);
