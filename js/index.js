@@ -40,6 +40,7 @@ skipBtn.addEventListener("click", showSkipConfirmation);
 cancelSkipBtn.addEventListener("click", hideSkipConfirmation);
 confirmSkipBtn.addEventListener("click", skipTimer);
 resetBtn.addEventListener("click", resetTimer);
+settingsForm.addEventListener("submit", saveSettings);
 
 // functions
 
@@ -145,4 +146,26 @@ function resetTimer() {
   updateTimerDisplay();
   toggleBtn.textContent = "Start";
   resetBtn.disabled = true;
+}
+function saveSettings(e) {
+  e.preventDefault();
+  workTime = document.getElementById("workDuration").value * 60;
+  breakTime = document.getElementById("breakDuration").value * 60;
+  longBreakTime = document.getElementById("longBreakDuration").value * 60;
+  sessionsBeforeLongBreak = document.getElementById(
+    "sessionsBeforeLongBreak"
+  ).value;
+  muteSounds = document.getElementById("muteSounds").checked;
+
+  if (isWorkMode) {
+    currentTime = workTime;
+  } else if (cycles % sessionsBeforeLongBreak === 0) {
+    currentTime = longBreakTime;
+  } else {
+    currentTime = breakTime;
+  }
+
+  updateTimerDisplay();
+  settingsModal.style.display = "none";
+  if (!muteSounds) cyberBeep.play();
 }
