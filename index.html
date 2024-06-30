@@ -69,5 +69,57 @@
         </button>
       </div>
     </div>
+
+    <div id="settingsModal" class="modal">
+      <div class="modal-content">
+        <span class="close">×</span>
+        <h2>Settings</h2>
+        <form id="settingsForm" class="settings-form">
+          <label>
+            Work Duration (minutes):
+            <input
+              type="number"
+              id="workDuration"
+              min="1"
+              max="60"
+              value="25" />
+          </label>
+          <label>
+            Break Duration (minutes):
+            <input
+              type="number"
+              id="breakDuration"
+              min="1"
+              max="30"
+              value="5" />
+          </label>
+          <label>
+            Long Break Duration (minutes):
+            <input
+              type="number"
+              id="longBreakDuration"
+              min="5"
+              max="60"
+              value="15" />
+          </label>
+          <label>
+            Sessions before Long Break:
+            <input
+              type="number"
+              id="sessionsBeforeLongBreak"
+              min="1"
+              max="10"
+              value="4" />
+          </label>
+          <label>
+            Mute Sounds:
+            <input type="checkbox" id="muteSounds" />
+          </label>
+          <button type="submit" class="btn">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/index.js"></script>
   </body>
 </html>
