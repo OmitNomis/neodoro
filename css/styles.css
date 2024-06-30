@@ -2,7 +2,7 @@
 
 :root {
   --primary-color: #00ff00;
-  --secondary-color: #ff00ff;
+  --secondary-color: #c82fff;
   --bg-color: #0a0a0a;
   --modal-bg-color: #1a1a1a;
   --text-color: #00ff00;
@@ -43,7 +43,7 @@ html {
   color: var(--primary-color);
   font-size: clamp(4rem, 10vw, 8rem);
   text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color),
-    0 0 30px var(--primary-color);
+    0 0 20px var(--primary-color);
   transition: text-shadow 0.3s ease;
 }
 
@@ -202,7 +202,7 @@ html {
   background-color: var(--modal-bg-color);
   padding: 20px;
   border: 1px solid var(--primary-color);
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+  box-shadow: 0 0 20px var(--primary-color);
   text-align: center;
 }
 
@@ -291,7 +291,7 @@ body.break-mode {
 
 body.break-mode .timer {
   text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color),
-    0 0 30px var(--secondary-color);
+    0 0 20px var(--secondary-color);
 }
 body.break-mode .mini-modal p {
   color: var(--primary-color);
