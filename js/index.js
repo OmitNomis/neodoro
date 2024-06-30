@@ -115,11 +115,9 @@ function skipTimer() {
   }
   isWorkMode = !isWorkMode;
   document.body.classList.toggle("break-mode");
+  toggleTimer();
+  toggleBtn.textContent = "Start";
   updateTimerDisplay();
-  if (isRunning) {
-    clearInterval(timerInterval);
-    timerInterval = setInterval(updateTimer, 1000);
-  }
   hideSkipConfirmation();
 }
 
