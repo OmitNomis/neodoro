@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="manifest" href="public/site.webmanifest" />
     <title>NeoDoro | A Cyberpunk Style Pomodoro Timer</title>
@@ -73,9 +78,8 @@
       </button>
       <div class="stats">
         <div>Cycles: <span id="cycles">0</span></div>
-        <div>Focus Time: <span id="focusTime">0</span> min</div>
       </div>
-      <h1 class="glitch">NeoDoro</h1>
+      <h1 class="glitch" animateText="NeoDoro">NeoDoro</h1>
       <div class="timer-container">
         <div class="timer" id="timer">25:00</div>
         <div class="mode" id="mode">Work Mode</div>

@@ -245,7 +245,7 @@ body {
 
 .glitch:before,
 .glitch:after {
-  content: attr(title);
+  content: attr(animateText);
   position: absolute;
   left: 0;
 }

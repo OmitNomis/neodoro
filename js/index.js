@@ -7,7 +7,6 @@ let currentTime = workTime;
 let timerInterval;
 let isWorkMode = true;
 let cycles = 0;
-let focusTimeInMinutes = 0;
 let sessionsBeforeLongBreak = 4;
 let muteSounds = false;
 
@@ -18,7 +17,6 @@ const toggleBtn = document.getElementById("toggleBtn");
 const resetBtn = document.getElementById("resetBtn");
 const skipBtn = document.getElementById("skipBtn");
 const cyclesDisplay = document.getElementById("cycles");
-const focusTimeDisplay = document.getElementById("focusTime");
 const settingsBtn = document.getElementById("settingsBtn");
 const settingsModal = document.getElementById("settingsModal");
 const settingsForm = document.getElementById("settingsForm");
@@ -68,10 +66,6 @@ function updateTimer() {
   if (currentTime > 0) {
     currentTime--;
     updateTimerDisplay();
-    if (isWorkMode) {
-      focusTimeInMinutes = Math.floor((workTime - currentTime) / 60);
-      focusTimeDisplay.textContent = focusTimeInMinutes;
-    }
   } else {
     clearInterval(timerInterval);
     isRunning = false;
