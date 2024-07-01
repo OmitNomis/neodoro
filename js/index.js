@@ -25,13 +25,20 @@ const skipConfirmModal = document.getElementById("skipConfirmModal");
 const confirmSkipBtn = document.getElementById("confirmSkip");
 const cancelSkipBtn = document.getElementById("cancelSkip");
 
+// audio elements
+const clickSound = document.getElementById("click");
+const positiveSound = document.getElementById("positive");
+const negativeSound = document.getElementById("negative");
+
 // event listeners
 toggleBtn.addEventListener("click", toggleTimer);
 
 settingsBtn.addEventListener("click", () => {
   settingsModal.style.display = "block";
+  if (!muteSounds) positiveSound.play();
 });
 closeBtn.addEventListener("click", () => {
+  if (!muteSounds) negativeSound.play();
   settingsModal.style.display = "none";
 });
 skipBtn.addEventListener("click", showSkipConfirmation);
@@ -51,6 +58,7 @@ function updateTimerDisplay() {
 }
 
 function toggleTimer() {
+  if (!muteSounds) clickSound.play();
   if (isRunning) {
     clearInterval(timerInterval);
     toggleBtn.textContent = "Resume";
@@ -93,6 +101,7 @@ function updateTimer() {
 // skip timer
 
 function skipTimer() {
+  if (!muteSounds) clickSound.play();
   if (isWorkMode) {
     cycles++;
     cyclesDisplay.textContent = cycles;
@@ -109,22 +118,27 @@ function skipTimer() {
   }
   isWorkMode = !isWorkMode;
   document.body.classList.toggle("break-mode");
-  toggleTimer();
+  if (isRunning) {
+    toggleTimer();
+  }
   toggleBtn.textContent = "Start";
   updateTimerDisplay();
-  hideSkipConfirmation();
+  skipConfirmModal.style.display = "none";
 }
 
 function showSkipConfirmation() {
+  if (!muteSounds) positiveSound.play();
   skipConfirmModal.style.display = "block";
 }
 
 function hideSkipConfirmation() {
+  if (!muteSounds) negativeSound.play();
   skipConfirmModal.style.display = "none";
 }
 
 // reset
 function resetTimer() {
+  if (!muteSounds) clickSound.play();
   clearInterval(timerInterval);
   isRunning = false;
   console.log(modeDisplay.textContent);
@@ -148,6 +162,7 @@ function saveSettings(e) {
     "sessionsBeforeLongBreak"
   ).value;
   muteSounds = document.getElementById("muteSounds").checked;
+  if (!muteSounds) clickSound.play();
 
   // Save settings to localStorage
   const settings = {
