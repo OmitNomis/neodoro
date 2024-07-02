@@ -1,6 +1,6 @@
 // Timer variables
 let isRunning = false;
-let workTime = 5;
+let workTime = 25 * 60;
 let breakTime = 5 * 60;
 let longBreakTime = 15 * 60;
 let currentTime = workTime;
