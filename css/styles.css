@@ -341,3 +341,26 @@ body.break-mode .icon-btn:hover {
     font-size: 0.8rem;
   }
 }
+.footer {
+  background-color: rgba(26, 26, 26, 0.8);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 10rem;
+  width: 100%;
+  box-shadow: 0 -5px 20px var(--primary-color);
+}
+
+.footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer a:hover {
+  text-shadow: 0 0 10px var(--primary-color);
+}
+
+.heart {
+  color: red;
+}

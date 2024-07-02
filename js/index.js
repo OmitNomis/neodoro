@@ -122,6 +122,7 @@ function skipTimer() {
     toggleTimer();
   }
   toggleBtn.textContent = "Start";
+  resetBtn.disabled = true;
   updateTimerDisplay();
   skipConfirmModal.style.display = "none";
 }
