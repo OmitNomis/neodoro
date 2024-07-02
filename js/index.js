@@ -1,6 +1,6 @@
 // Timer variables
 let isRunning = false;
-let workTime = 25 * 60;
+let workTime = 5;
 let breakTime = 5 * 60;
 let longBreakTime = 15 * 60;
 let currentTime = workTime;
@@ -26,19 +26,31 @@ const confirmSkipBtn = document.getElementById("confirmSkip");
 const cancelSkipBtn = document.getElementById("cancelSkip");
 
 // audio elements
-const clickSound = document.getElementById("click");
-const positiveSound = document.getElementById("positive");
-const negativeSound = document.getElementById("negative");
+const clickSound1 = document.getElementById("click1");
+const clickSound2 = document.getElementById("click2");
+const clickSound3 = document.getElementById("click3");
+const openSound = document.getElementById("open");
+const closeSound = document.getElementById("close");
+const alarmSound = document.getElementById("alarm");
+
+const clickSounds = [clickSound1, clickSound2, clickSound3];
+
+// play random sound for click.
+function playRandomClickSound() {
+  const randomIndex = Math.floor(Math.random() * clickSounds.length);
+  const selectedSound = clickSounds[randomIndex];
+  selectedSound.play();
+}
 
 // event listeners
 toggleBtn.addEventListener("click", toggleTimer);
 
 settingsBtn.addEventListener("click", () => {
   settingsModal.style.display = "block";
-  if (!muteSounds) positiveSound.play();
+  if (!muteSounds) openSound.play();
 });
 closeBtn.addEventListener("click", () => {
-  if (!muteSounds) negativeSound.play();
+  if (!muteSounds) closeSound.play();
   settingsModal.style.display = "none";
 });
 skipBtn.addEventListener("click", showSkipConfirmation);
@@ -58,7 +70,7 @@ function updateTimerDisplay() {
 }
 
 function toggleTimer() {
-  if (!muteSounds) clickSound.play();
+  if (!muteSounds) playRandomClickSound();
   if (isRunning) {
     clearInterval(timerInterval);
     toggleBtn.textContent = "Resume";
@@ -71,10 +83,11 @@ function toggleTimer() {
 }
 
 function updateTimer() {
-  if (currentTime > 0) {
+  if (currentTime > 1) {
     currentTime--;
     updateTimerDisplay();
   } else {
+    alarmSound.play();
     clearInterval(timerInterval);
     isRunning = false;
     if (isWorkMode) {
@@ -101,7 +114,7 @@ function updateTimer() {
 // skip timer
 
 function skipTimer() {
-  if (!muteSounds) clickSound.play();
+  if (!muteSounds) playRandomClickSound();
   if (isWorkMode) {
     cycles++;
     cyclesDisplay.textContent = cycles;
@@ -128,18 +141,18 @@ function skipTimer() {
 }
 
 function showSkipConfirmation() {
-  if (!muteSounds) positiveSound.play();
+  if (!muteSounds) openSound.play();
   skipConfirmModal.style.display = "block";
 }
 
 function hideSkipConfirmation() {
-  if (!muteSounds) negativeSound.play();
+  if (!muteSounds) closeSound.play();
   skipConfirmModal.style.display = "none";
 }
 
 // reset
 function resetTimer() {
-  if (!muteSounds) clickSound.play();
+  if (!muteSounds) playRandomClickSound();
   clearInterval(timerInterval);
   isRunning = false;
   console.log(modeDisplay.textContent);
@@ -163,7 +176,7 @@ function saveSettings(e) {
     "sessionsBeforeLongBreak"
   ).value;
   muteSounds = document.getElementById("muteSounds").checked;
-  if (!muteSounds) clickSound.play();
+  if (!muteSounds) playRandomClickSound();
 
   // Save settings to localStorage
   const settings = {
